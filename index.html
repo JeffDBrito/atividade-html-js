@@ -1,23 +1,97 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade DAC</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-    <div class="input-group">
-        <label for="input_nome">Nome:</label>
-        <input type="text" name="nome" id="input_nome">
-    </div>
-
-    <div class="input-group">
-        <label for="input_endereco">Endereço:</label>
-        <input type="text" name="endereco" id="input_endereco">
-    </div>
+    <div id="page">
+        <div id="formulario">
+            <form action="#" method="post" id="formulario-cadastro">
+                <div class="input-group"> 
+                    <label class="form-label vertical-center" for="input_nome">Nome:</label>
+                    <input class="form-input" type="text" name="nome" id="input_nome" required>
+                </div>
+            
+                <div class="input-group"> 
+                    <label class="form-label vertical-center" for="input_endereco">Endereço:</label>
+                    <input class="form-input" type="text" name="endereco" id="input_endereco" required>
+                </div>
     
+                <div class="input-group">
+                    <span class="form-label vertical-center">Tipo de Moradia:</span>
+                    <div class="radio-section">
+                        <label for="input_moradia_casa">Casa</label>
+                        <input class="form-input" type="radio" name="moradia" id="input_moradia_casa" value="Casa" required>
+                        <label for="input_moradia_apartamento">Apartamento</label>
+                        <input class="form-input" type="radio" name="moradia" id="input_moradia_apartamento" value="Apartamento" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="form-label vertical-center" for="input_telefone">Telefone:</label>
+                    <input class="form-input" type="text" name="telefone" id="input_telefone" required>
+                </div>
+    
+                <div class="input-group">
+                    <span class="form-label vertical-center">Linguagens preferidas:</span>
+                    <div class="checkbox-section">
+                        <input class="form-input" type="checkbox" id="input_linguagens_c" name="linguagens" value="C">
+                        <label for="input_linguagens_c">C</label>
+    
+                        <input class="form-input" type="checkbox" id="input_linguagens_csharp" name="linguagens" value="C#">
+                        <label for="input_linguagens_csharp">C#</label>
+                        
+                        <input class="form-input" type="checkbox" id="input_linguagens_java" name="linguagens" value="Java">
+                        <label for="input_linguagens_java">Java</label>
+                        
+                        <input class="form-input" type="checkbox" id="input_linguagens_php" name="linguagens" value="PHP">
+                        <label for="input_linguagens_php">PHP</label>
+    
+                        <input class="form-input" type="checkbox" id="input_linguagens_python" name="linguagens" value="Python">
+                        <label for="input_linguagens_python">Python</label>
+                    </div>
+                </div>
+    
+                <div class="input-group">
+                    <label class="form-label vertical-center" for="input_observacao">Observação:</label>
+                    <textarea class="form-input" name="observacao" id="input_observacao" cols="20" rows="5" maxlength="100" required></textarea>
+                </div>
+    
+                <div class="button-section">
+                    <button class="form-button" type="submit">Adicionar</button>
+                </div>
+    
+            </form>
+        </div> 
+
+        <div id="tabela-section">
+
+            <table id="tabela-registro" border="1" cellpadding="5">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Tipo de Moradia</th>
+                        <th>Telefone</th>
+                        <th>Linguagens Preferidas</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabela-corpo">
+                    
+                </tbody>
+            </table>
+
+        </div>
+        
+    </div>    
 
 </body>
-
 </html>
+<script src="script.js"></script>
