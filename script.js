@@ -1,8 +1,10 @@
 const registros = [];
-const formulario = document.getElementById('formulario-cadastro');
 const tabela_section = document.getElementById('tabela-section');
 const tabela = document.getElementById('tabela-registro');
 const checkboxes = document.querySelectorAll('input[type="checkbox"][name="linguagens"]');
+
+document.getElementById('formulario-cadastro').addEventListener('submit', handleSubmit);
+addRequiredCheckboxes();
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -23,30 +25,14 @@ function handleSubmit(event) {
         alert('Por favor, preencha todos os campos!');
         return;
     }
-
-    if(registros.length === 0) {
-        tabela_section.style.display = 'block';
-    }
     
     registros.push(registro);
-
-    const novaLinha = `
-        <tr>
-            <td>${registro.nome}</td>
-            <td>${registro.endereco}</td>
-            <td>${registro.moradia}</td>
-            <td>${registro.telefone}</td>
-            <td>${registro.linguagens.join(', ')}</td>
-            <td class="break-anywhere">${registro.observacao}</td>
-        </tr>
-    `;
-    tabela.innerHTML += novaLinha;    
-
+    writeTabela();
     form.reset();
-    resetCheckboxes();
+    addRequiredCheckboxes();
 }
 
-function resetCheckboxes() {
+function addRequiredCheckboxes() {
     checkboxes.forEach(checkbox => {
         checkbox.required = true;
         checkbox.addEventListener('change', () => {
@@ -56,6 +42,46 @@ function resetCheckboxes() {
     });
 }
 
-resetCheckboxes();
+function writeTabela() {
+    tabela.innerHTML = '';
 
-this.formulario.addEventListener('submit', handleSubmit);
+    const tabela_header = `
+        <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Tipo de Moradia</th>
+            <th>Telefone</th>
+            <th>Linguagens Preferidas</th>
+            <th>Observação</th>
+            <th>Ação</th>
+        </tr>
+    `;
+    tabela.innerHTML = tabela_header;
+
+    if(registros.length === 0) {
+        tabela_section.style.display = 'none';
+        return;
+    }else{
+        tabela_section.style.display = 'block';
+    }
+
+    registros.forEach((registro, i) => {
+        const novaLinha = `
+            <tr>
+                <td>${registro.nome}</td>
+                <td>${registro.endereco}</td>
+                <td>${registro.moradia}</td>
+                <td>${registro.telefone}</td>
+                <td>${registro.linguagens.join(', ')}</td>
+                <td class="break-anywhere">${registro.observacao}</td>
+                <td><button class="delete-button" onclick="deletarRegistro(${i})">Excluir</button></td>
+            </tr>
+        `;
+        tabela.innerHTML += novaLinha;
+    });
+}
+
+function deletarRegistro(index) {
+    registros.splice(index, 1);
+    writeTabela();
+}
