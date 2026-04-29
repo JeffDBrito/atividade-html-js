@@ -1,10 +1,97 @@
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     margin: 20px;
 }
 
+#page{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Formulário */
+
 .input-group {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     margin-bottom: 10px;
+    grid-auto-flow: column;
+    grid-template-columns: 180px auto;
+}
+
+.input-group .form-label {
+    text-align: end;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.input-group .form-input{
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: lightgray;
+    margin-left: 10px;
+}
+
+.input-group .radio-section{
+    margin-left: 10px;
+}
+
+.input-group .checkbox-section{
+    margin-left: 5px;
+}
+
+.input-group
+
+.vertical-center {
+    align-items: center;
+}
+
+.form-button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto;
+}
+
+.button-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.form-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Tabela */
+
+#tabela-section {
+    margin-top: 20px;
+    display: none;
+}
+
+table {
+    width: 100%;
+    /* border-collapse: collapse; */
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid lightgray;
+}
+
+th, td {
+    text-align: center;
+    font-size: 12px;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.break-anywhere{
+    line-break: anywhere;
 }
